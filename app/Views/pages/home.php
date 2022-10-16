@@ -1,0 +1,1 @@
+<h1>Hola esto es la view de la home!</h1>
