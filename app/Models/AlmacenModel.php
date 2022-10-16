@@ -7,6 +7,7 @@ use CodeIgniter\Model;
 class AlmacenModel extends Model
 {
     protected $table = 'almacen';
+    protected $allowedFields = ['codigo', 'texto'];
 
     public function getAlmacen($id = false)
     {
