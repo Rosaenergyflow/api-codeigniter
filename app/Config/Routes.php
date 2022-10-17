@@ -39,11 +39,10 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
-$routes->match(['get', 'post'], 'almacen/create', 'Almacen::create');
 $routes->get('almacen/(:segment)', 'Almacen::view/$1');
 $routes->get('almacen', 'Almacen::index');
-$routes->get('pages', 'Pages::index');
-$routes->get('(:any)', 'Pages::view/$1');
+
+$routes->match(['get', 'post'], 'almacen/create', 'Almacen::create');
 
 
 /*

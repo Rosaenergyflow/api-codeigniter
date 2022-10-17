@@ -12,13 +12,10 @@ class Almacen extends BaseController
         $model = model(AlmacenModel::class);
 
         $data = [
-            'almacen'  => $model->getAlmacen(),
-            'title' => 'Almacen archive',
+            'productos' => $model->getAlmacen(),
+            'success' => true,
         ];
-
-        return view('templates/header', $data)
-            . view('almacen/overview')
-            . view('templates/footer');
+        return $this->response->setJSON($data);
     }
 
     // Pagina con 1 dato
@@ -26,40 +23,25 @@ class Almacen extends BaseController
     {
         $model = model(AlmacenModel::class);
 
-        $data['almacen'] = $model->getAlmacen($id);
-        $data['title'] = 'Producto: '.$data['almacen']['codigo'];
-        
-        if (empty($data['almacen'])) {
+        $data['producto'] = $model->getAlmacen($id);
+
+        if (empty($data['producto'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the almacen item: ' . $id);
         }
 
-        $data['codigo'] = $data['almacen']['codigo'];
-
-        return view('templates/header', $data)
-            . view('almacen/view')
-            . view('templates/footer');
+        return $this->response->setJSON($data);
     }
 
     // Crear 1 dato
     public function create()
     {
         $model = model(AlmacenModel::class);
-        
-        if ($this->request->getMethod() === 'post' && $this->validate([
-            'codigo' => 'required|min_length[3]|max_length[255]',
-            'texto'  => 'required',
-        ])) {
-            $model->save([
-                'codigo' => $this->request->getPost('codigo'),
-                // 'slug'  => url_title($this->request->getPost('codigo'), '-', true),
-                'texto'  => $this->request->getPost('texto'),
-            ]);
 
-            return view('almacen/success');
-        }
+        $model->save([
+            'codigo' => $this->request->getPost('codigo'),
+            'texto' => $this->request->getPost('texto'),
+        ]);
 
-        return view('templates/header', ['title' => 'Crea un nuevo producto'])
-            . view('almacen/create')
-            . view('templates/footer');
+        return $this->response->setJSON($data);
     }
 }

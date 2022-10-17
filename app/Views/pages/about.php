@@ -1,1 +1,0 @@
-<h1>Hola esto es la view de about!</h1>
