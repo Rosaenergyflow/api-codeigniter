@@ -36,7 +36,6 @@
 </head>
 
 <body>
-
     <div class="container">
         <h1>Guia de la api:</h1>
         <ul>

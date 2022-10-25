@@ -44,7 +44,6 @@ $routes->get('almacen', 'Almacen::index');
 
 $routes->match(['get', 'post'], 'almacen/create', 'Almacen::create');
 
-
 /*
  * --------------------------------------------------------------------
  * Additional Routing

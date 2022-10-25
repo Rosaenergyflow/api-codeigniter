@@ -35,13 +35,17 @@ class Almacen extends BaseController
     // Crear 1 dato
     public function create()
     {
+        
         $model = model(AlmacenModel::class);
 
         $model->save([
             'codigo' => $this->request->getPost('codigo'),
-            'texto' => $this->request->getPost('texto'),
+            'texto' => $this->request->getPost('texto')
         ]);
-
-        return $this->response->setJSON($data);
+        $model->insert([
+            'codigo' => $this->request->getPost('codigo'),
+            'texto' => $this->request->getPost('texto')
+        ]);
+    
     }
 }
