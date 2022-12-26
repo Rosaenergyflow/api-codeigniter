@@ -35,7 +35,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        'database' => 'astroflor',
+        'database' => 'db_name',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
